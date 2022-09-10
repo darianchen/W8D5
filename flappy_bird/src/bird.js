@@ -1,6 +1,6 @@
 const CONSTANTS = {
-  GRAVITY:  0.8,
-  FLAP_SPEED:  -8,
+  GRAVITY:  0.5,
+  FLAP_SPEED:  -5,
   TERMINAL_VEL:  12,
   BIRD_WIDTH:  40,
   BIRD_HEIGHT:  30
@@ -11,7 +11,7 @@ export default class Bird {
     this.velocity = 0;
     this.dimensions = dimensions;
     this.posX = dimensions['width'] / 3;
-    this.posY = dimensions['height'] / 2;
+    this.posY = dimensions['height'] / 2; 
   }
 
   drawBird(ctx) {
@@ -38,4 +38,11 @@ export default class Bird {
     this.velocity = CONSTANTS.FLAP_SPEED;
   }
   
+  getBounds () {
+    return [this.posX, this.posY, this.posX + CONSTANTS.BIRD_WIDTH, this.posY + CONSTANTS.BIRD_HEIGHT];
+  }
+
+  bottomY () {
+    return this.posY + CONSTANTS.BIRD_HEIGHT;
+  }
 }
